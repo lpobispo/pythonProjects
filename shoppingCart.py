@@ -49,4 +49,4 @@ for order in myCart:
 
 print()
 print(f"Your total is Php{totalAmt:.2f}")   # displays the total amount of users cart
-print("Please pay at the counter")
+print()
