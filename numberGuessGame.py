@@ -11,6 +11,7 @@ is_running = True
 
 print("---- Welcome to Python Number Guessing Game ----")
 print(f"Select a number between {lowest_num} and {highest_num}")
+print("------------------------------------------------")
 
 while is_running:
     # user input
@@ -22,14 +23,18 @@ while is_running:
         if guess < lowest_num or guess > highest_num:   # checks if the user input is out of range
             print("Your guess is out of range!")
             print(f"Please select a number between {lowest_num} and {highest_num}")
+            print()
         elif guess < answer:                            # checks if user's guess is less than the answer
             print("Your guess is too low. Try again.")
+            print()
         elif guess > answer:                            # checks if user's guess is higher than the answer
             print("Your guess is too high. Try again.")
+            print()
         else:                                           # checks if the user's guess is equal to the answer
             print(f"Correct! The correct number is {answer}")
-            print(f"Your total guess is {guesses}")
+            print(f"You have a total of {guesses} guesses.")
             is_running = False
     else:       # user's input is not a number/digit.
         print("Your guess is invalid!")
         print(f"Please select a number between {lowest_num} and {highest_num}")
+        print()
