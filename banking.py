@@ -5,7 +5,7 @@ def show_balance(current_balance):
     print(f"Your balance is P{current_balance:.2f}")
     print("**********************")
 
-def deposit(current_balance):
+def deposit():
     deposit_amt = float(input("Enter amount to deposit: "))
 
     if deposit_amt < 0:
@@ -38,8 +38,7 @@ def main():
     bank_is_running = True
 
     while bank_is_running:
-        print()
-        print("**********************")
+        print("\n**********************")
         print("   Banking Program   ")
         print("**********************")
 
