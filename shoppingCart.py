@@ -1,5 +1,6 @@
 # simple shopping cart program with dictionary
 # no libraries used
+from time import sleep
 
 # dictionary {key}:{value}
 menu = {"hamburger": 49.00,
@@ -38,15 +39,14 @@ while True:
     elif upper_dict_menu.get(order) is not None:
         myCart.append(order)    # add order to myCart list for every correct item in the menu
 
-print()
-print("------- Your orders are --------")
-print()
+print("\n------- Your orders are --------\n")
+
 
 # iterate order through myCart and stores the amount(value) of each to the totalAmt
 for order in myCart:
     totalAmt = totalAmt + upper_dict_menu.get(order)
     print(order)
 
-print()
-print(f"Your total is Php{totalAmt:.2f}")   # displays the total amount of users cart
-print()
+print(f"\nYour total is Php{totalAmt:.2f}\n")   # displays the total amount of users cart
+
+sleep(2)        # 2 seconds delay before the program close
