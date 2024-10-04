@@ -74,10 +74,14 @@ def main():
 
         keep_playing = input("Do you want to play again? (Y/N): ").upper() # ask the user to play again
 
+        if balance == 0 and keep_playing == "Y":            # checks if balance is 0 and player still wants to play
+            print("Sorry, you don't have enough funds")
+            break
         if keep_playing != "Y":
             break                   # exit the program if the input is not 'Y'
 
     print(f"Thank you for playing! Your final balance is P{balance:.2f}")
+    sleep(2)
 
 
 if __name__ == '__main__':
