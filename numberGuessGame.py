@@ -2,6 +2,7 @@
 # random module
 
 import random
+from time import sleep  # to add delay before closing program
 
 lowest_num = 1
 highest_num = 100
@@ -34,6 +35,7 @@ while is_running:
             print(f"Correct! The correct number is {answer}")
             print(f"You have a total of {guesses} guesses.")
             is_running = False
+            sleep(3)
     else:       # user's input is not a number/digit.
         print("Your guess is invalid!")
         print(f"Please select a number between {lowest_num} and {highest_num}")
