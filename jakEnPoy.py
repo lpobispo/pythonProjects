@@ -9,7 +9,6 @@ is_playing = True
 
 print()
 print("Welcome to Python Rock Paper Scissors game")
-print("Select R for Rock, P for Paper, S for Scissors")
 print("---------------------------------------")
 print()
 
@@ -20,6 +19,9 @@ while is_playing:
 
     while player not in jakNpoy:
         player = input("Select a choice (rock, paper, scissors): ")
+        if player != 'rock' and player != 'paper' and player != 'scissors':
+            print("Invalid input!")
+            continue
 
     print(f"Player: {player}")
     print(f"Computer: {computer}")
