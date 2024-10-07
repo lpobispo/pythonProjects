@@ -4,7 +4,7 @@ from time import sleep
 
 
 def spin_row():
-    symbols = ['🍒', '🍉', '🍋', '🔔', '⭐']             # declaring the list of symbols
+    symbols = ['🍿', '🍟', '🍕', '🌭', '🍔']             # declaring the list of symbols
 
     return [random.choice(symbols) for _ in range(3)]     # iterate through the list 3 times and return
                                                           # a random symbol from the list
@@ -16,15 +16,15 @@ def print_row(row):
 
 def get_payout(row, bet):
     if row[0] == row[1] == row[2]:      # checks if all symbols are the same
-        if row[0] == '🍒':
+        if row[0] == '🍿':
             return bet * 2
-        elif row[0] == '🍉':
+        elif row[0] == '🍟':
             return bet * 3
-        elif row[0] == '🍋':
+        elif row[0] == '🍕':
             return bet * 4
-        elif row[0] == '🔔':
+        elif row[0] == '🌭':
             return bet * 8
-        elif row[0] == '⭐':
+        elif row[0] == '🍔':
             return bet * 15
     return 0
 
@@ -34,7 +34,7 @@ def main():
 
     print("\n******************************")
     print("Welcome to Python Slot Machine")
-    print("   Symbols: 🍒 🍉 🍋 🔔 ⭐   ")
+    print("   Symbols: 🍿 🍟 🍕 🌭 🍔   ")
     print("******************************")
 
     while balance > 0:
