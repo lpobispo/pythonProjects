@@ -81,7 +81,7 @@ def main():
             break                   # exit the program if the input is not 'Y'
 
     print(f"Thank you for playing! Your final balance is P{balance:.2f}")
-    sleep(2)
+    sleep(3)
 
 
 if __name__ == '__main__':

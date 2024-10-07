@@ -49,4 +49,4 @@ for order in myCart:
 
 print(f"\nYour total is Php{totalAmt:.2f}\n")   # displays the total amount of users cart
 
-sleep(2)        # 2 seconds delay before the program close
+sleep(3)        # 3 seconds delay before the program close
