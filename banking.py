@@ -1,4 +1,6 @@
 # Simple banking program in Python
+from time import sleep
+
 
 def show_balance(current_balance):
     print("**********************")
@@ -52,7 +54,7 @@ def main():
         if user_choice == '1':      # show balance
             show_balance(current_balance)
         elif user_choice == '2':    # deposit
-            current_balance += deposit(current_balance)
+            current_balance += deposit()
         elif user_choice == '3':    # withdraw
             current_balance -= withdraw(current_balance)
         elif user_choice == '4':    # exit program
@@ -61,6 +63,7 @@ def main():
             print("Have a great day!")
             print("**********************")
             bank_is_running = False
+            sleep(1)
         else:
             print("**********************")
             print("Invalid option! Please try again.")
