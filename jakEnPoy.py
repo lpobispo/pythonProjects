@@ -2,6 +2,7 @@
 # random module
 
 import random
+from time import sleep
 
 jakNpoy = ("rock", "paper", "scissors")
 is_playing = True
@@ -38,43 +39,4 @@ while is_playing:
         is_playing = False
 
 print("------ Thanks for playing! ------")
-
-
-
-
-
-
-
-
-
-# while is_running:
-#     guess = input("Select your guess: ").lower()
-#     print()
-#     if guess.isalpha():
-#         if guess != "r":
-#             print(f"{guess.upper()} is invalid!")
-#             print(f"Please select R for Rock, P for Paper, S for Scissors")
-#             print()
-#         elif guess != "p":
-#             print(f"{guess.upper()} is invalid!")
-#             print(f"Please select R for Rock, P for Paper, S for Scissors")
-#             print()
-#         elif guess != "s":
-#             print(f"{guess.upper()} is invalid!")
-#             print(f"Please select R for Rock, P for Paper, S for Scissors")
-#             print()
-#         else:
-#             if guess == "r" and answer == "rock":
-#                 print("It's a tie!")
-#                 break
-#             elif guess == "p" and answer == "paper":
-#                 print("It's a tie!")
-#                 break
-#             elif guess == "s" and answer == "scissors":
-#                 print("It's a tie!")
-#                 break
-#
-#     else:
-#         print(f"{guess.upper()} is invalid!")
-#         print(f"Please select R for Rock, P for Paper, S for Scissors")
-#         print()
+sleep(3)
