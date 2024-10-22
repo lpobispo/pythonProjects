@@ -1,5 +1,7 @@
 import sys
 import random
+from time import sleep
+
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QLabel, QPushButton, QWidget,
                              QVBoxLayout, QHBoxLayout, QBoxLayout, QGridLayout, QMessageBox)
 from PyQt5.QtCore import Qt, QSize
@@ -36,19 +38,6 @@ class MainWindow(QMainWindow):
         # Create QLabel for the computer sign
         self.comp_sign_label = QLabel(self)
 
-        # Set the appropriate pixmap based on chosen_sign
-        if self.comp_chosen_sign == 'rock':
-            new_pixmap = QPixmap("RPS_rock.jpeg")
-        elif self.comp_chosen_sign == 'paper':
-            new_pixmap = QPixmap("RPS_paper.jpeg")
-        elif self.comp_chosen_sign == 'scissors':
-            new_pixmap = QPixmap("RPS_scissors.jpeg")
-
-        # # Resize the pixmap and set it on the QLabel
-        resized_pixmap = new_pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-        self.comp_sign_label.setPixmap(resized_pixmap)
-
-
         # Player hand sign
         self.player_sign_label = QLabel('', self)
 
@@ -67,10 +56,10 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(central_widget)
 
             # score label size and positioning
-        self.comp_label.setGeometry(10, 200, 100, 30)
-        self.player_label.setGeometry(400, 235, 100, 30)
-        self.comp_score_label.setGeometry(10, 105, 100, 100)
-        self.player_score_label.setGeometry(400, 260, 100, 100)
+        self.comp_label.setGeometry(5, 200, 100, 30)
+        self.player_label.setGeometry(395, 238, 100, 30)
+        self.comp_score_label.setGeometry(5, 106, 100, 100)
+        self.player_score_label.setGeometry(395, 262, 100, 100)
 
             # score label text alignment
         self.comp_label.setAlignment(Qt.AlignCenter)
@@ -114,27 +103,26 @@ class MainWindow(QMainWindow):
         self.middle_border_label.setAlignment(Qt.AlignCenter)
 
             # comp hand sign position
-        self.comp_sign_label.setGeometry(200, 70, 100, 100)
-
-            # comp hand sign style
-        # self.comp_sign_label.setStyleSheet("background-color: #e8e6e8;")
-        self.comp_sign_label.setStyleSheet("border: 1px solid black;"
-                                           "border-radius: 10px")
+        self.comp_sign_label.setGeometry(150, 10, 200, 200)
 
             # comp hand sign alignment
         self.comp_sign_label.setAlignment(Qt.AlignCenter)
 
-            # player hand sign position
-        self.player_sign_label.setGeometry(200, 300, 100, 100)
+            # comp hand sign style
+        # self.comp_sign_label.setStyleSheet("background-color: #e8e6e8;")
+        # self.comp_sign_label.setStyleSheet("border: 1px solid black;"
+        #                                    "border-radius: 10px")
 
-            # player hand sign style
-        # self.player_sign_label.setStyleSheet("background-color: #e8e6e8;")
-        self.player_sign_label.setStyleSheet("border: 1px solid black;"
-                                             "border-radius: 10px")
+            # player hand sign position
+        self.player_sign_label.setGeometry(150, 240, 200, 200)
 
             # player hand sign alignment
         self.player_sign_label.setAlignment(Qt.AlignCenter)
 
+            # player hand sign style
+        # self.player_sign_label.setStyleSheet("background-color: #e8e6e8;")
+        # self.player_sign_label.setStyleSheet("border: 1px solid black;"
+        #                                      "border-radius: 10px")
 
             # rock button icon
         self.rock_button.setIcon(QIcon("RPS_rock.jpeg"))
@@ -196,21 +184,21 @@ class MainWindow(QMainWindow):
     # button methods
     def rock_on_click(self):
         new_pixmap = QPixmap("RPS_rock.jpeg")
-        resized_pixmap = new_pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        resized_pixmap = new_pixmap.scaled(150, 150, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.player_sign_label.setPixmap(resized_pixmap)
 
         self.player_chosen_sign = "rock"
 
     def paper_on_click(self):
         new_pixmap = QPixmap("RPS_paper.jpeg")
-        resized_pixmap = new_pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        resized_pixmap = new_pixmap.scaled(150, 150, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.player_sign_label.setPixmap(resized_pixmap)
 
         self.player_chosen_sign = "paper"
 
     def scissors_on_click(self):
         new_pixmap = QPixmap("RPS_scissors.jpeg")
-        resized_pixmap = new_pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        resized_pixmap = new_pixmap.scaled(150, 150, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.player_sign_label.setPixmap(resized_pixmap)
 
         self.player_chosen_sign = "scissors"
@@ -223,28 +211,19 @@ class MainWindow(QMainWindow):
         # Compare the player's chosen sign with the computer's chosen sign
         if self.player_chosen_sign == self.comp_chosen_sign:
             # print("It's a tie!")
-            msg.setText(f"It's a tie! Player score: {self.player_score} | Computer: {self.comp_score}")     # msgbox if tie
+            msg.setText(f"It's a tie! Player: {self.player_score} | Computer: {self.comp_score}")     # msgbox if tie
         elif (self.player_chosen_sign == "rock" and self.comp_chosen_sign == "scissors") or \
                 (self.player_chosen_sign == "scissors" and self.comp_chosen_sign == "paper") or \
                 (self.player_chosen_sign == "paper" and self.comp_chosen_sign == "rock"):
-            # print("You win!")
             self.player_score += 1
-            msg.setText(f"Player win! Player score: {self.player_score} | Computer: {self.comp_score}")     # msgbox if player win
-            self.player_score_label.setText(f"Player: {self.player_score}")
+            msg.setText(f"Player win! Player: {self.player_score} | Computer: {self.comp_score}")     # msgbox if player win
         else:
-            # print("You lose!")
             self.comp_score += 1
-            msg.setText(f"Computer win! Player score: {self.player_score} | Computer: {self.comp_score}")   # msgbox if comp win
-            self.player_score_label.setText(f"Computer: {self.comp_score}")
-        msg.setWindowTitle("RPS")
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.exec_()
-
+            msg.setText(f"Computer win! Player: {self.player_score} | Computer: {self.comp_score}")   # msgbox if comp win
 
         # Update the score labels to reflect the new scores
-        self.comp_score_label.setText(f"Computer: {self.comp_score}")
-        self.player_score_label.setText(f"Player: {self.player_score}")
-
+        self.comp_score_label.setText(f"{self.comp_score}")
+        self.player_score_label.setText(f"{self.player_score}")
 
         if self.comp_chosen_sign == 'rock':
             new_pixmap = QPixmap("RPS_rock.jpeg")
@@ -254,9 +233,12 @@ class MainWindow(QMainWindow):
             new_pixmap = QPixmap("RPS_scissors.jpeg")
 
         # Resize the pixmap and set it on the QLabel
-        resized_pixmap = new_pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        resized_pixmap = new_pixmap.scaled(150, 150, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.comp_sign_label.setPixmap(resized_pixmap)
 
+        msg.setWindowTitle("RPS")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
         # checks who got 5 scores
         if self.player_score == 5:
@@ -264,6 +246,7 @@ class MainWindow(QMainWindow):
         elif self.comp_score == 5:
             self.game_over()
         else:
+            sleep(1)
             self.reset_game()
 
     def reset_game(self):
@@ -279,16 +262,6 @@ class MainWindow(QMainWindow):
         comp_hand = ("rock", "paper", "scissors")
         self.comp_chosen_sign = random.choice(comp_hand)
 
-        # Update the computer's hand label with the new sign
-        if self.comp_chosen_sign == 'rock':
-            new_pixmap = QPixmap("RPS_rock.jpeg")
-        elif self.comp_chosen_sign == 'paper':
-            new_pixmap = QPixmap("RPS_paper.jpeg")
-        elif self.comp_chosen_sign == 'scissors':
-            new_pixmap = QPixmap("RPS_scissors.jpeg")
-
-        resized_pixmap = new_pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-        self.comp_sign_label.setPixmap(resized_pixmap)
 
     def game_over(self):
 
@@ -296,9 +269,9 @@ class MainWindow(QMainWindow):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Question)
         if self.player_score == 5:
-            msg.setText("Congratulations You win!\n\nDo you want to reset the game?")       # msgbox if player win
+            msg.setText("Congratulations, player. You win!\n\nDo you want to play again?")       # msgbox if player win
         elif self.comp_score == 5:
-            msg.setText("Sorry, Computer Win!\n\nDo you want to reset the game?")           # msgbox if comp win
+            msg.setText("Sorry player, computer Win!\n\nDo you want to play again?")           # msgbox if comp win
         msg.setWindowTitle("Game over")
         msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         retval = msg.exec_()
@@ -306,8 +279,8 @@ class MainWindow(QMainWindow):
             # reset scores
             self.player_score = 0
             self.comp_score = 0
-            self.player_score_label.setText("Player: 0")
-            self.comp_score_label.setText("Computer: 0")
+            self.player_score_label.setText("0")
+            self.comp_score_label.setText("0")
             self.reset_game()  # Call your reset function here
         else:
             # close the main window
